@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Legacy CSS and JS Sample</title>
+		<style>
+			* html #layout {
+				height: 1%;
+			}
+			
+			#legacy-box {
+				_width: 240px;
+				*width: 220px;
+				color: #cc0000\9;
+				-webkit-border-radius: 8px;
+				-moz-border-radius: 8px;
+				filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="layout">
+			<div id="legacy-box">Legacy sample content</div>
+		</div>
+
+		<script>
+			if (document.all) {
+				document.all.legacyBox.style.backgroundColor = '#ffffcc';
+			}
+			
+			if (document.layers) {
+				console.log('Netscape 4 layers detected');
+			}
+			
+			if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appName === 'Netscape') {
+				console.log('Legacy browser branch');
+			}
+			
+			var legacyBox = document.getElementById('legacy-box');
+			
+			if (legacyBox && legacyBox.currentStyle) {
+				console.log('Current width:', legacyBox.currentStyle.width);
+			}
+			
+			if (legacyBox && legacyBox.runtimeStyle) {
+				legacyBox.runtimeStyle.left = '16px';
+			}
+			
+			if (legacyBox && legacyBox.style) {
+				legacyBox.style.filter = 'alpha(opacity=60)';
+				console.log(legacyBox.filters);
+				console.log(legacyBox.style.pixelLeft);
+			}
+			
+			var sheet = document.styleSheets[0];
+			
+			if (sheet && sheet.rules) {
+				console.log('Legacy rule count:', sheet.rules.length);
+			}
+			
+			if (sheet && sheet.addRule) {
+				sheet.addRule('.legacy-added', 'zoom: 1');
+			}
+			
+			if (sheet && sheet.removeRule) {
+				sheet.removeRule(0);
+			}
+			
+			if (document.createStyleSheet) {
+				document.createStyleSheet();
+			}
+		</script>
+	</body>
+</html>

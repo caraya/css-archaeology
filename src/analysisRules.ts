@@ -1,8 +1,9 @@
 import type { AnalysisFinding, Rule } from './types';
-import rulesData from './rules.json';
+import cssRulesData from './rules.json';
+import jsRulesData from './jsRules.json';
 
 // Map the JSON data to include actual RegExp objects
-const RULES: Rule[] = rulesData.map(rawRule => ({
+const RULES: Rule[] = [...cssRulesData, ...jsRulesData].map(rawRule => ({
   ...rawRule,
   // Use 'gi' flags for global, case-insensitive matching
   regex: new RegExp(rawRule.regex, 'gi')
@@ -24,6 +25,7 @@ export const analyzeByLine = (input: string): AnalysisFinding[] => {
           line: index + 1,
           content: lineText.trim(),
           category: rule.category,
+          language: rule.language,
           severity: rule.severity,
           purpose: rule.purpose,
           modernReplacement: rule.modernReplacement

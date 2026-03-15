@@ -1,0 +1,110 @@
+[
+  {
+    "id": "js-document-all",
+    "category": "JS: Browser Detection",
+    "language": "JS",
+    "regex": "document\\.all\\b",
+    "severity": "High",
+    "purpose": "document.all: IE-only proprietary DOM collection, used as a browser sniff flag and for direct element style access.",
+    "modernReplacement": "document.getElementById() / document.querySelector(), combined with feature detection."
+  },
+  {
+    "id": "js-document-layers",
+    "category": "JS: Browser Detection",
+    "language": "JS",
+    "regex": "document\\.layers\\b",
+    "severity": "High",
+    "purpose": "document.layers: Netscape 4 proprietary API for CSS-positioned layer objects.",
+    "modernReplacement": "Standard DOM: document.getElementById() with CSS positioning."
+  },
+  {
+    "id": "js-navigator-useragent",
+    "category": "JS: Browser Sniffing",
+    "language": "JS",
+    "regex": "navigator\\.userAgent",
+    "severity": "Medium",
+    "purpose": "navigator.userAgent sniffing: Parsing the UA string to branch CSS or feature behavior per browser.",
+    "modernReplacement": "Feature detection: CSS @supports, window.CSS.supports(), or Modernizr."
+  },
+  {
+    "id": "js-navigator-appname",
+    "category": "JS: Browser Sniffing",
+    "language": "JS",
+    "regex": "navigator\\.appName",
+    "severity": "Medium",
+    "purpose": "navigator.appName: Legacy browser name check used to branch between IE and Netscape codepaths.",
+    "modernReplacement": "Feature detection instead of browser name checks."
+  },
+  {
+    "id": "js-current-style",
+    "category": "JS: Computed Style",
+    "language": "JS",
+    "regex": "\\.currentStyle\\b",
+    "severity": "High",
+    "purpose": "currentStyle: IE-only property for reading an element's computed styles.",
+    "modernReplacement": "window.getComputedStyle(element)."
+  },
+  {
+    "id": "js-runtime-style",
+    "category": "JS: Computed Style",
+    "language": "JS",
+    "regex": "\\.runtimeStyle\\b",
+    "severity": "High",
+    "purpose": "runtimeStyle: IE-only override style layer that sits above author styles at runtime.",
+    "modernReplacement": "Direct element.style assignment or CSS custom properties."
+  },
+  {
+    "id": "js-stylesheet-rules",
+    "category": "JS: StyleSheet API",
+    "language": "JS",
+    "regex": "\\.rules\\b",
+    "severity": "High",
+    "purpose": "stylesheet.rules: IE-only property on CSSStyleSheet; the standard equivalent is .cssRules.",
+    "modernReplacement": "stylesheet.cssRules (standard CSSStyleSheet API)."
+  },
+  {
+    "id": "js-add-rule",
+    "category": "JS: StyleSheet API",
+    "language": "JS",
+    "regex": "\\.addRule\\s*\\(",
+    "severity": "High",
+    "purpose": "addRule(): IE-only method to append a CSS rule to a stylesheet.",
+    "modernReplacement": "stylesheet.insertRule(selectorText + '{' + cssText + '}', index)."
+  },
+  {
+    "id": "js-remove-rule",
+    "category": "JS: StyleSheet API",
+    "language": "JS",
+    "regex": "\\.removeRule\\s*\\(",
+    "severity": "High",
+    "purpose": "removeRule(): IE-only method to delete a CSS rule from a stylesheet by index.",
+    "modernReplacement": "stylesheet.deleteRule(index)."
+  },
+  {
+    "id": "js-create-stylesheet",
+    "category": "JS: StyleSheet API",
+    "language": "JS",
+    "regex": "createStyleSheet\\s*\\(",
+    "severity": "High",
+    "purpose": "document.createStyleSheet(): IE proprietary method to programmatically create a new stylesheet.",
+    "modernReplacement": "Create and append a <style> element: document.createElement('style'), then append to document.head."
+  },
+  {
+    "id": "js-ie-filter",
+    "category": "JS: IE Visual Filters",
+    "language": "JS",
+    "regex": "\\.filters\\b|\\.filter\\s*=",
+    "severity": "High",
+    "purpose": "IE filter via JS: The .filters collection and .filter style assignment applied DirectX visual transforms (opacity, blur, gradients).",
+    "modernReplacement": "CSS opacity, filter, or backdrop-filter properties."
+  },
+  {
+    "id": "js-pixel-properties",
+    "category": "JS: IE Style Properties",
+    "language": "JS",
+    "regex": "\\.pixelLeft\\b|\\.pixelTop\\b|\\.pixelWidth\\b|\\.pixelHeight\\b",
+    "severity": "Medium",
+    "purpose": "Pixel style properties (.pixelLeft, .pixelTop etc.): IE-only numeric pixel accessors on element.style.",
+    "modernReplacement": "parseInt(element.style.left) or element.getBoundingClientRect()."
+  }
+]
