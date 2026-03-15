@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ie6-star-html",
+    "category": "IE6- Hacks",
+    "regex": "\\* html [.#]?[\\w-]+",
+    "severity": "High",
+    "purpose": "Star HTML hack (IE6 parser bug).",
+    "modernReplacement": "Standard selectors."
+  },
+  {
+    "id": "ie6-underscore",
+    "category": "IE6 Hacks",
+    "regex": "_\\w+\\s*:",
+    "severity": "High",
+    "purpose": "Underscore prefix hack.",
+    "modernReplacement": "Standard properties."
+  },
+  {
+    "id": "ie6-7-star-prefix",
+    "category": "IE6-7 Hacks",
+    "regex": "\\*[\\w-]+\\s*:",
+    "severity": "High",
+    "purpose": "Star prefix hack.",
+    "modernReplacement": "Standard properties."
+  },
+  {
+    "id": "ie6-9-filter",
+    "category": "IE6-9 Hacks",
+    "regex": "-ms-filter:\\s*\"progid:|filter:\\s*progid:",
+    "severity": "High",
+    "purpose": "Old IE Filter/DirectX transforms.",
+    "modernReplacement": "CSS3 opacity, gradients, or transforms."
+  },
+  {
+    "id": "ie8-10-trailing",
+    "category": "IE8-10 Hacks",
+    "regex": "[\\w-]+\\s*:\\s*[^;}\\n]+\\\\9",
+    "severity": "High",
+    "purpose": "Trailing \\9 hack.",
+    "modernReplacement": "Standard properties."
+  },
+  {
+    "id": "vendor-webkit",
+    "category": "Prefixes",
+    "regex": "-webkit-(?!text-fill-color|text-stroke|appearance|mask|line-clamp)[\\w-]+\\s*:",
+    "severity": "Low",
+    "purpose": "Legacy WebKit prefix.",
+    "modernReplacement": "Unprefixed properties."
+  },
+  {
+    "id": "vendor-moz",
+    "category": "Prefixes",
+    "regex": "-moz-[\\w-]+\\s*:",
+    "severity": "Low",
+    "purpose": "Legacy Firefox prefix.",
+    "modernReplacement": "Unprefixed properties."
+  }
+]
